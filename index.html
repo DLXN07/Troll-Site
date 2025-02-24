@@ -3,76 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Questionnaire</title>
+    <title>Do you like me?</title>
     <style>
         body {
+            margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(270deg, #ff9a9e, #fad0c4);
-            animation: backgroundAnimation 5s infinite alternate;
-        }
-        @keyframes backgroundAnimation {
-            0% { background: linear-gradient(270deg, #ff9a9e, #fad0c4); }
-            100% { background: linear-gradient(270deg, #fad0c4, #ff9a9e); }
-        }
-        .container {
-            text-align: center;
+            background: linear-gradient(270deg, #ff69b4, #ff1493, #ff6ec7);
+            background-size: 400% 400%;
+            animation: gradientFlow 8s ease infinite;
             font-family: Arial, sans-serif;
         }
-        .question {
-            font-size: 24px;
-            font-weight: bold;
-            padding: 20px;
-            border-radius: 10px;
-            border: 2px solid black;
-            display: inline-block;
-            background: white;
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
         .buttons {
-            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
         }
-        button {
-            font-size: 18px;
-            padding: 10px 20px;
+
+        .btn {
+            font-size: 24px;
+            padding: 15px 30px;
             border: none;
-            border-radius: 10px;
             cursor: pointer;
-            transition: transform 0.3s, background-color 0.3s;
+            border-radius: 10px;
+            transition: transform 0.2s ease, background 0.3s ease;
         }
-        #yes {
-            background-color: green;
+
+        .yes {
+            background: #4CAF50;
             color: white;
         }
-        #no {
-            background-color: red;
+
+        .no {
+            background: #E74C3C;
             color: white;
             position: absolute;
         }
-        button:hover {
+
+        .btn:hover {
             transform: scale(1.1);
         }
-        button:active {
-            transform: scale(0.9);
+
+        .no:hover {
+            transform: translateX(calc(50px - 100px * Math.random())) translateY(calc(50px - 100px * Math.random()));
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="question">Do you like me?</div>
+        <h1>Do you like me?</h1>
         <div class="buttons">
-            <button id="yes" onclick="window.location.href='handsome.html'">Yes</button>
-            <button id="no" onclick="moveNoButton()">No</button>
+            <button class="btn yes" onclick="window.location.href='handsome.html'">Yes</button>
+            <button class="btn no" onclick="moveButton()">No</button>
         </div>
     </div>
+
     <script>
-        function moveNoButton() {
-            let button = document.getElementById("no");
-            let x = Math.random() * (window.innerWidth - button.offsetWidth);
-            let y = Math.random() * (window.innerHeight - button.offsetHeight);
-            button.style.left = `${x}px`;
-            button.style.top = `${y}px`;
+        function moveButton() {
+            const noButton = document.querySelector('.no');
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 50);
+            noButton.style.left = `${x}px`;
+            noButton.style.top = `${y}px`;
         }
     </script>
 </body>
