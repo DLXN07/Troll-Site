@@ -6,51 +6,46 @@
     <title>Questionnaire</title>
     <style>
         body {
-            margin: 0;
-            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(270deg, #ff69b4, #ff1493, #ff6ec7);
+            flex-direction: column;
+            background: linear-gradient(270deg, #ff9a9e, #fad0c4);
             background-size: 400% 400%;
-            animation: gradientFlow 8s ease infinite;
+            animation: gradientBG 6s ease infinite;
             font-family: Arial, sans-serif;
+            text-align: center;
         }
 
-        @keyframes gradientFlow {
+        @keyframes gradientBG {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
         .container {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            max-width: 500px;
-        }
-
-        h1 {
-            font-size: 36px;
-            margin-bottom: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            font-size: 24px;
         }
 
         .buttons {
+            margin-top: 20px;
             display: flex;
             justify-content: center;
             gap: 20px;
         }
 
-        .btn {
-            font-size: 24px;
+        button {
             padding: 15px 30px;
+            font-size: 20px;
             border: none;
-            cursor: pointer;
             border-radius: 10px;
-            transition: transform 0.2s ease, background 0.3s ease;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.3s;
         }
 
         .yes {
@@ -59,32 +54,31 @@
         }
 
         .no {
-            background: #E74C3C;
+            background: #F44336;
             color: white;
             position: absolute;
         }
 
-        .btn:hover {
+        button:hover {
             transform: scale(1.1);
-        }
-
-        .no:hover {
-            transform: translateX(calc(50px - 100px * Math.random())) translateY(calc(50px - 100px * Math.random()));
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Do you like me?</h1>
-        <div class="buttons">
-            <button class="btn yes" onclick="window.location.href='handsome.html'">Yes</button>
-            <button class="btn no" onclick="moveButton()">No</button>
-        </div>
+        <p>Do you like me?</p>
     </div>
-
+    <div class="buttons">
+        <button class="yes" onclick="redirectToHandsome()">Yes</button>
+        <button class="no" onclick="moveNoButton()">No</button>
+    </div>
     <script>
-        function moveButton() {
-            const noButton = document.querySelector('.no');
+        function redirectToHandsome() {
+            window.location.href = "handsome.html";
+        }
+
+        function moveNoButton() {
+            const noButton = document.querySelector(".no");
             const x = Math.random() * (window.innerWidth - 100);
             const y = Math.random() * (window.innerHeight - 50);
             noButton.style.left = `${x}px`;
