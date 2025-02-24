@@ -16,6 +16,8 @@
             justify-content: center;
             height: 100vh;
             font-family: Arial, sans-serif;
+            overflow: hidden;
+            position: relative;
         }
 
         @keyframes gradientBG {
@@ -39,6 +41,7 @@
             margin-top: 20px;
             display: flex;
             gap: 20px;
+            position: relative;
         }
 
         .btn {
@@ -48,19 +51,22 @@
             border: 3px solid black;
             display: inline-block;
             cursor: pointer;
-            transform: skew(-10deg);
             transition: all 0.3s ease;
+            border-radius: 10px;
+            position: absolute;
         }
 
         .yes {
             background-color: lightgreen;
             color: black;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .no {
             background-color: lightcoral;
             color: black;
-            transform: skew(10deg);
+            left: calc(50% + 80px);
         }
 
         /* Button Hover Animation */
@@ -77,12 +83,28 @@
 </head>
 <body>
 
-    <div class="question">Do you like Minecraft?</div>
+    <div class="question">Do you like me?</div>
 
     <div class="buttons">
-        <div class="btn yes">Yes</div>
-        <div class="btn no">No</div>
+        <div class="btn yes" onclick="redirectToHandsome()">Yes</div>
+        <div class="btn no" onclick="moveNoButton()">No</div>
     </div>
+
+    <script>
+        function moveNoButton() {
+            const noButton = document.querySelector('.no');
+            const maxX = window.innerWidth - 100; // Limit movement within the screen width
+            const maxY = window.innerHeight - 100; // Limit movement within the screen height
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+            noButton.style.left = randomX + 'px';
+            noButton.style.top = randomY + 'px';
+        }
+
+        function redirectToHandsome() {
+            window.location.href = "handsome.html";
+        }
+    </script>
 
 </body>
 </html>
