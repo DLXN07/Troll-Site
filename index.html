@@ -3,67 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Do you like me?</title>
+    <title>Questionnaire</title>
     <style>
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            flex-direction: column;
-            background-color: white;
+            background: linear-gradient(270deg, #ff9a9e, #fad0c4);
+            animation: backgroundAnimation 5s infinite alternate;
+        }
+        @keyframes backgroundAnimation {
+            0% { background: linear-gradient(270deg, #ff9a9e, #fad0c4); }
+            100% { background: linear-gradient(270deg, #fad0c4, #ff9a9e); }
+        }
+        .container {
+            text-align: center;
             font-family: Arial, sans-serif;
         }
         .question {
-            padding: 20px;
-            border: 3px solid black;
-            border-radius: 15px;
-            text-align: center;
             font-size: 24px;
             font-weight: bold;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid black;
+            display: inline-block;
+            background: white;
         }
         .buttons {
             margin-top: 20px;
-            display: flex;
-            gap: 20px;
         }
-        .btn {
+        button {
+            font-size: 18px;
             padding: 10px 20px;
-            font-size: 20px;
             border: none;
-            border-radius: 15px;
+            border-radius: 10px;
             cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
         }
-        .yes {
+        #yes {
             background-color: green;
             color: white;
         }
-        .no {
+        #no {
             background-color: red;
             color: white;
             position: absolute;
         }
+        button:hover {
+            transform: scale(1.1);
+        }
+        button:active {
+            transform: scale(0.9);
+        }
     </style>
 </head>
 <body>
-    <div class="question">Do you like me?</div>
-    <div class="buttons">
-        <button class="btn yes" onclick="redirect()">Yes</button>
-        <button class="btn no" onclick="moveNoButton()">No</button>
+    <div class="container">
+        <div class="question">Do you like me?</div>
+        <div class="buttons">
+            <button id="yes" onclick="window.location.href='handsome.html'">Yes</button>
+            <button id="no" onclick="moveNoButton()">No</button>
+        </div>
     </div>
-
     <script>
-        function redirect() {
-            window.location.href = "handsome.html";
-        }
         function moveNoButton() {
-            let noButton = document.querySelector('.no');
-            let x = Math.random() * (window.innerWidth - 100);
-            let y = Math.random() * (window.innerHeight - 50);
-            noButton.style.left = `${x}px`;
-            noButton.style.top = `${y}px`;
+            let button = document.getElementById("no");
+            let x = Math.random() * (window.innerWidth - button.offsetWidth);
+            let y = Math.random() * (window.innerHeight - button.offsetHeight);
+            button.style.left = `${x}px`;
+            button.style.top = `${y}px`;
         }
     </script>
 </body>
 </html>
-
