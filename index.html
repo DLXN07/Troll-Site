@@ -3,67 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Question</title>
+    <title>Do you like me?</title>
     <style>
         body {
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
             height: 100vh;
-            background: white;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            text-align: center;
+            flex-direction: column;
+            background-color: white;
+            font-family: Arial, sans-serif;
         }
         .question {
             padding: 20px;
             border: 3px solid black;
             border-radius: 15px;
+            text-align: center;
             font-size: 24px;
             font-weight: bold;
-            background: rgba(255, 255, 255, 0.8);
-            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
         }
-        .button-container {
+        .buttons {
             margin-top: 20px;
             display: flex;
             gap: 20px;
         }
-        .yes, .no {
+        .btn {
             padding: 10px 20px;
-            font-size: 18px;
-            font-weight: bold;
+            font-size: 20px;
             border: none;
+            border-radius: 15px;
             cursor: pointer;
-            transition: transform 0.2s ease-in-out;
         }
         .yes {
-            background: green;
+            background-color: green;
             color: white;
-            transform: rotate(-5deg);
         }
         .no {
-            background: red;
+            background-color: red;
             color: white;
-            transform: rotate(5deg);
             position: absolute;
-        }
-        .yes:hover, .no:hover {
-            transform: scale(1.1);
         }
     </style>
 </head>
 <body>
-    <div class="question">Do you like Me?</div>
-    <div class="button-container">
-        <button class="yes" onclick="window.location.href='handsome.html'">Yes</button>
-        <button class="no" onclick="moveNoButton()">No</button>
+    <div class="question">Do you like me?</div>
+    <div class="buttons">
+        <button class="btn yes" onclick="redirect()">Yes</button>
+        <button class="btn no" onclick="moveNoButton()">No</button>
     </div>
+
     <script>
+        function redirect() {
+            window.location.href = "handsome.html";
+        }
         function moveNoButton() {
-            const noButton = document.querySelector('.no');
-            const x = Math.random() * (window.innerWidth - 100);
-            const y = Math.random() * (window.innerHeight - 50);
+            let noButton = document.querySelector('.no');
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 50);
             noButton.style.left = `${x}px`;
             noButton.style.top = `${y}px`;
         }
