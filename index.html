@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Styled Question</title>
     <style>
-        /* Animated Background */
         body {
             background: linear-gradient(270deg, #ff9a9e, #fad0c4, #ffdde1, #ffbec5);
             background-size: 400% 400%;
@@ -69,13 +68,11 @@
             left: calc(50% + 80px);
         }
 
-        /* Button Hover Animation */
         .btn:hover {
-            transform: scale(1.1);
+            transform: scale(1);
             box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
         }
 
-        /* Button Click Animation */
         .btn:active {
             transform: scale(0.9);
         }
@@ -83,7 +80,7 @@
 </head>
 <body>
 
-    <div class="question">Do you like me?</div>
+    <div class="question">Are you Human?</div>
 
     <div class="buttons">
         <div class="btn yes" onclick="redirectToHandsome()">Yes</div>
@@ -93,8 +90,8 @@
     <script>
         function moveNoButton() {
             const noButton = document.querySelector('.no');
-            const maxX = window.innerWidth - 100; // Limit movement within the screen width
-            const maxY = window.innerHeight - 100; // Limit movement within the screen height
+            const maxX = window.innerWidth - 60; // Limit movement within the screen width
+            const maxY = window.innerHeight - 60; // Limit movement within the screen height
             const randomX = Math.floor(Math.random() * maxX);
             const randomY = Math.floor(Math.random() * maxY);
             noButton.style.left = randomX + 'px';
