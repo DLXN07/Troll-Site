@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Questionnaire</title>
+    <title>Minecraft Survey</title>
     <style>
         @keyframes flowingRiver {
             0% { background-position: 0% 50%; }
@@ -25,15 +25,23 @@
             text-align: center;
         }
         .question {
-            font-size: 24px;
-            margin-bottom: 20px;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 5px solid black;
+            border-radius: 15px;
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.7);
         }
         .button {
-            padding: 10px 20px;
-            font-size: 18px;
+            padding: 15px 30px;
+            font-size: 24px;
             border: none;
             cursor: pointer;
             transition: transform 0.2s, background-color 0.3s;
+            border-radius: 10px;
+            margin: 20px;
         }
         #yes {
             background-color: green;
@@ -51,9 +59,11 @@
 </head>
 <body>
     <div class="container">
-        <div class="question">Are you a Human?</div>
-        <button id="yes" class="button" onclick="redirectToYes()">Yes</button>
-        <button id="no" class="button" onclick="moveNo()">No</button>
+        <div class="question">Do you like Minecraft?</div>
+        <div>
+            <button id="yes" class="button" onclick="redirectToYes()">Yes</button>
+            <button id="no" class="button" onclick="moveNo()">No</button>
+        </div>
     </div>
 
     <script>
@@ -62,8 +72,8 @@
         }
 
         function moveNo() {
-            let x = Math.floor(Math.random() * window.innerWidth - 100);
-            let y = Math.floor(Math.random() * window.innerHeight - 50);
+            let x = Math.floor(Math.random() * (window.innerWidth - 200));
+            let y = Math.floor(Math.random() * (window.innerHeight - 100));
             let noButton = document.getElementById("no");
             noButton.style.left = `${x}px`;
             noButton.style.top = `${y}px`;
