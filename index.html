@@ -3,105 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Styled Question</title>
+    <title>Questionnaire</title>
     <style>
-        body {
-            background: linear-gradient(270deg, #ff9a9e, #fad0c4, #ffdde1, #ffbec5);
-            background-size: 400% 400%;
-            animation: gradientBG 10s ease infinite;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            font-family: Arial, sans-serif;
-            overflow: hidden;
-            position: relative;
-        }
-
-        @keyframes gradientBG {
+        @keyframes flowingRiver {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-
-        .question {
-            border: 3px solid black;
-            border-radius: 15px;
-            padding: 20px;
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
-            display: inline-block;
-            background-color: white;
-        }
-
-        .buttons {
-            margin-top: 20px;
+        
+        body {
             display: flex;
-            gap: 20px;
-            position: relative;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(270deg, pink, orange);
+            background-size: 400% 400%;
+            animation: flowingRiver 10s ease infinite;
+            font-family: Arial, sans-serif;
         }
-
-        .btn {
+        .container {
+            text-align: center;
+        }
+        .question {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .button {
             padding: 10px 20px;
-            font-size: 20px;
-            font-weight: bold;
-            border: 3px solid black;
-            display: inline-block;
+            font-size: 18px;
+            border: none;
             cursor: pointer;
-            transition: all 0.3s ease;
-            border-radius: 10px;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+        #yes {
+            background-color: green;
+            color: white;
+        }
+        #no {
+            background-color: red;
+            color: white;
             position: absolute;
         }
-
-        .yes {
-            background-color: lightgreen;
-            color: black;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .no {
-            background-color: lightcoral;
-            color: black;
-            left: calc(50% + 80px);
-        }
-
-        .btn:hover {
-            transform: scale(1);
-            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn:active {
-            transform: scale(0.9);
+        .button:hover {
+            transform: scale(1.1);
         }
     </style>
 </head>
 <body>
-
-    <div class="question">Are you Human?</div>
-
-    <div class="buttons">
-        <div class="btn yes" onclick="redirectToHandsome()">Yes</div>
-        <div class="btn no" onclick="moveNoButton()">No</div>
+    <div class="container">
+        <div class="question">Are you a Human?</div>
+        <button id="yes" class="button" onclick="redirectToYes()">Yes</button>
+        <button id="no" class="button" onclick="moveNo()">No</button>
     </div>
 
     <script>
-        function moveNoButton() {
-            const noButton = document.querySelector('.no');
-            const maxX = window.innerWidth - 60; // Limit movement within the screen width
-            const maxY = window.innerHeight - 60; // Limit movement within the screen height
-            const randomX = Math.floor(Math.random() * maxX);
-            const randomY = Math.floor(Math.random() * maxY);
-            noButton.style.left = randomX + 'px';
-            noButton.style.top = randomY + 'px';
-        }
-
-        function redirectToHandsome() {
+        function redirectToYes() {
             window.location.href = "handsome.html";
         }
-    </script>
 
+        function moveNo() {
+            let x = Math.floor(Math.random() * window.innerWidth - 100);
+            let y = Math.floor(Math.random() * window.innerHeight - 50);
+            let noButton = document.getElementById("no");
+            noButton.style.left = `${x}px`;
+            noButton.style.top = `${y}px`;
+        }
+    </script>
 </body>
 </html>
