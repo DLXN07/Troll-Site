@@ -16,6 +16,10 @@
             text-align: center;
             overflow: hidden;
             position: relative;
+        }    
+        img {
+            width: 250px;
+            height: 250px;
         }
         .message {
             font-size: 2em;
@@ -38,15 +42,7 @@
         .button:hover {
             background: #fc913a;
         }
-        .flower {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: pink;
-            border-radius: 50%;
-            opacity: 0.7;
-            animation: float 4s linear infinite;
-        }
+        
         @keyframes float {
             0% { transform: translateY(100vh) scale(0.5); opacity: 1; }
             100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
@@ -54,24 +50,12 @@
     </style>
 </head>
 <body>
-    <div class="message">Yeah, he is handsome!</div>
-    <button class="button" onclick="createFlower()">Visit My Profile</button>
+
+    <img src="PicKo.jpg" alt="PicKo">
     
-    <script>
-        function createFlower() {
-            const flower = document.createElement('div');
-            flower.classList.add('flower');
-            document.body.appendChild(flower);
-            
-            flower.style.left = Math.random() * 100 + 'vw';
-            flower.style.animationDuration = (Math.random() * 3 + 2) + 's';
-            
-            setTimeout(() => {
-                flower.remove();
-            }, 4000);
-        }
-        
-        setInterval(createFlower, 200);
-    </script>
+    <div class="message">Yeah, he is handsome!</div>
+    
+    <a href="https://www.facebook.com/justinmarkdylan.bacongan" class="button">Visit My Profile</a>
+    
 </body>
 </html>
